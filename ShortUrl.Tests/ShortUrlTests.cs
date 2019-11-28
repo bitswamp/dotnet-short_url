@@ -5,7 +5,7 @@ namespace ShortUrl.Tests
     public class ShortUrlTests
     {
         [Fact]
-        public void CanEncodeAsExpected()
+        public void TestEncodeSteps()
         {
             var instance = new UrlEncoder();
             var encode = instance.Encode(2);
@@ -15,7 +15,7 @@ namespace ShortUrl.Tests
         }
 
         [Fact]
-        public void CanDecodeAsExpected()
+        public void TestDecodeSteps()
         {
             var instance = new UrlEncoder();
             var debase = instance.Debase("def");
@@ -25,7 +25,7 @@ namespace ShortUrl.Tests
         }
 
         [Fact]
-        public void CanSetCustomAlphabet()
+        public void TestCustomAlphabet()
         {
             var instance = new UrlEncoder("ab");
             var encode = instance.Encode(12);
@@ -34,6 +34,20 @@ namespace ShortUrl.Tests
             Assert.Equal("bbaaaaaaaaaaaaaaaaaaaa", url);
             var key = instance.DecodeUrl("bbaaaaaaaaaaaaaaaaaaaa");
             Assert.Equal(12, key);
+        }
+
+        [Theory]
+        [InlineData(0, "mmmmm")]
+        [InlineData(1, "867nv")]
+        [InlineData(2, "25t52")]
+        [InlineData(108130, "2quaa")]
+        [InlineData(507842, "2xzau")]
+        [InlineData(603936, "mbxtx")]
+        public void TestCalculatedValues(int id, string key)
+        {
+            var instance = new UrlEncoder();
+            Assert.Equal(key, instance.EncodeUrl(id));
+            Assert.Equal(id, instance.DecodeUrl(key));
         }
     }
 }
