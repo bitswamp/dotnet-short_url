@@ -1,7 +1,26 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>bitswamp</Authors>
+    <Description>A port of python-short_url for generating non sequential short ids
+
+https://github.com/bitswamp/dotnet-short_url</Description>
+    <PackageLicenseExpression></PackageLicenseExpression>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <PackageId>dotnet-short_url</PackageId>
+    <Product>ShortUrl</Product>
+    <RepositoryUrl>https://github.com/bitswamp/dotnet-short_url</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/bitswamp/dotnet-short_url</PackageProjectUrl>
+    <Version>1.0.1</Version>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE.md">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>
